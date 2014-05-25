@@ -246,7 +246,7 @@ class ObjectGroup(BaseLayer):
 
 class Tileset(object):
     """Manages a tileset and it's used internally by TileLayer."""
-    def __init__(self, data):
+    def __init__(self, data, nearest=False):
         self.data = data
 
         # used to convert coordinates of the grid
@@ -255,7 +255,12 @@ class Tileset(object):
 
         # the image will be accessed using pyglet resources
         self.image = os.path.basename(self.data["image"])
-        self.texture = get_texture_sequence(self.image, self.data["tilewidth"], self.data["tileheight"], self.data["margin"], self.data["spacing"])
+        self.texture = get_texture_sequence(self.image, self.data["tilewidth"],
+                                            self.data["tileheight"],
+                                            self.data["margin"],
+                                            self.data["spacing"],
+                                            nearest=False,
+                                            )
 
     def __getitem__(self, index):
         return self.texture[index]
@@ -270,7 +275,13 @@ class Map(object):
 
     Maps can created providing the JSON data to this class or using `Map.load_json()`
     and after that a viewport must be set with `Map.set_viewport()`.
+
+    Set Map.nearest to True to set GL_NEAREST for moth min and mag filters in the
+    tile textures.
     """
+
+    nearest = False
+
     def __init__(self, data):
         self.data = data
 
@@ -281,7 +292,7 @@ class Map(object):
         self.objectgroups = {}
 
         for tileset in data["tilesets"]:
-            self.tilesets[tileset["name"]] = Tileset(tileset)
+            self.tilesets[tileset["name"]] = Tileset(tileset, Map.nearest)
 
         for layer in data["layers"]:
             # TODO: test this!
