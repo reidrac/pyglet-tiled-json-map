@@ -122,11 +122,11 @@ even it won't be managed by the Map itself.
 
 There are some things to take into account:
 
-- The sprite should be added to the Map's batch using an `OrderedGroup` with number >=
-   `Map.last_group` (or it may not be visible).
-- The sprite coordinates are world based (instead of screen based). Also the `y`
-   coordinate has to be converted from pyglet's coordinate system to Tiled coordinate
-   system (basically: `y = SCREEN_HEIGHT-real_y-1`).
+- The sprite should be added to the Map's batch using an `OrderedGroup` with number 
+  >= `Map.last_group` (or it may not be visible).
+- The sprite coordinates are world based (instead of screen based). Also the `y` 
+  coordinate has to be converted from pyglet's coordinate system to Tiled coordinate 
+  system (basically: `y = SCREEN_HEIGHT-real_y-1`).
 
 The sprite can be moved using its `x` and `y` properties *in world coordinates*.
 
