@@ -74,6 +74,9 @@ Accessing to Map data
 Every element of the map has a `data` property that contains a dictionary with the
 actual JSON data, but that information can be access using a *pythonic* interface.
 
+In the case of object groups, the actual objects returned by the interface are
+dictionaries with no `data` property.
+
 Also the `Map` class provides access to the layers with:
 
 - `Map.layers`: list with **all** the layers.
@@ -86,7 +89,7 @@ The tile layer interface provides access to the tiles, for example::
     for tile in m.tilelayers["Walls"]:
         print tile
 
-    # get one especific tile
+    # get one specific tile
     print m.tilelayers["Walls"][10, 10]
 
 
@@ -136,4 +139,5 @@ Author
 
 Juan J. Martinez <jjm@usebox.net>
 
+The rendering code was inspired by Cocos2D TMX support.
 
