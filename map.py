@@ -29,15 +29,12 @@ any path information must be removed from the tileset.
 
 """
 import os
-import logging
 import json
 
 import pyglet
 from pyglet.graphics import OrderedGroup
 from pyglet.sprite import Sprite
 from pyglet import gl
-
-log = logging.getLogger("json-map")
 
 __all__ = ['Map', "TileLayer", "ObjectGroup",]
 
