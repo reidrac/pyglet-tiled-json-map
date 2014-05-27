@@ -275,14 +275,9 @@ class Map(object):
 
     Maps can created providing the JSON data to this class or using `Map.load_json()`
     and after that a viewport must be set with `Map.set_viewport()`.
-
-    Set Map.nearest to True to set GL_NEAREST for moth min and mag filters in the
-    tile textures.
     """
 
-    nearest = False
-
-    def __init__(self, data):
+    def __init__(self, data, nearest=False):
         self.data = data
 
         self.tilesets = {} # the order is not important
@@ -292,7 +287,7 @@ class Map(object):
         self.objectgroups = {}
 
         for tileset in data["tilesets"]:
-            self.tilesets[tileset["name"]] = Tileset(tileset, Map.nearest)
+            self.tilesets[tileset["name"]] = Tileset(tileset, nearest)
 
         for layer in data["layers"]:
             # TODO: test this!
@@ -424,12 +419,15 @@ class Map(object):
         return BaseLayer.groups-1
 
     @staticmethod
-    def load_json(fileobj):
+    def load_json(fileobj, nearest=False):
         """
         Load the map in JSON format.
 
         This class method return a `Map` object and the file will be
         closed after is read.
+
+        Set nearest to True to set GL_NEAREST for both min and mag
+        filters in the tile textures.
         """
         data = json.load(fileobj)
         fileobj.close()
