@@ -301,7 +301,7 @@ class Map(object):
                 self.layers.append(ObjectGroup(layer, self))
                 self.objectgroups[layer["name"]] = self.layers[-1]
             else:
-                log.warning("unsupported layer type %s, skipping" % layer["type"])
+                raise ValueError("unsupported layer type %s, skipping" % layer["type"])
 
         self.batch = pyglet.graphics.Batch()
 
