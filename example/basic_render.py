@@ -1,7 +1,7 @@
 #/usr/bin/env python
 
 import pyglet
-from map import Map
+from json_map import Map
 
 window = pyglet.window.Window()
 
