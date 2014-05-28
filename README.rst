@@ -26,8 +26,8 @@ A map can be loaded using `Map.load_json()`::
     # set the viewport
     m.set_vieport(0, 0, 320, 200)
 
-The viewport has to be set *once* so the Map class knows which area is available
-to draw the map.
+The viewport has to be set at least  *once* so the Map class knows which area is
+available to draw the map.
 
 
 Drawing the Map
@@ -46,7 +46,7 @@ See `example/basic_render.py` for a complete example.
 Changing the focus
 ^^^^^^^^^^^^^^^^^^
 
-If the map is larger than the are available to draw it, it is possible to specify
+If the map is larger than the area available to draw it, it is possible to specify
 which part of the map will be draw by using the `Map.set_focus(x, y)` method.
 
 
@@ -71,8 +71,8 @@ This can be useful to determine if an element is visible on screen or not.
 Accessing to Map data
 ^^^^^^^^^^^^^^^^^^^^^
 
-Every element of the map has a `data` property that contains a dictionary with the
-actual JSON data, but that information can be access using a *pythonic* interface.
+Almost every element of the map has a `data` property that contains a dictionary with
+the actual JSON data, but that information can be accessed using a *pythonic* interface.
 
 In the case of object groups, the actual objects returned by the interface are
 dictionaries with no `data` property.
@@ -121,7 +121,7 @@ Adding unmanaged sprites to the Map
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to get the best performance any `Sprite` can be added to the Map's batch
-even it won't be managed by the Map itself.
+even it won't be managed by the `Map` class.
 
 There are some things to take into account:
 
