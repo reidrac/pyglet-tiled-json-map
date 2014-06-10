@@ -390,7 +390,8 @@ class Map(object):
         """
         Translate world coordinate into screen coordinates.
 
-        Returns a (x, y) tuple."""
+        Returns a (x, y) tuple.
+        """
         return x-self.x, self.h-(y-self.y)
 
     def get_texture(self, gid):
@@ -431,7 +432,7 @@ class Map(object):
         """
         data = json.load(fileobj)
         fileobj.close()
-        return Map(data)
+        return Map(data, nearest)
 
     def draw(self):
         """Applies transforms and draws the batch."""
