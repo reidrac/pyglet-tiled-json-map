@@ -7,7 +7,6 @@ window = pyglet.window.Window()
 
 # load the map
 fd = pyglet.resource.file("map.json", 'rt')
-print("{0}".format(fd))
 m = Map.load_json(fd)
 
 # set the viewport to the window dimensions
