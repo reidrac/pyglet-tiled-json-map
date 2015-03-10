@@ -44,8 +44,8 @@ def get_texture_sequence(filename, tilewidth=32, tileheight=32, margin=1, spacin
     image = pyglet.resource.image(filename)
     region = image.get_region(margin, margin, image.width-margin*2, image.height-margin*2)
     grid = pyglet.image.ImageGrid(region,
-                                  region.height/tileheight,
-                                  region.width/tilewidth,
+                                  int(region.height/tileheight),
+                                  int(region.width/tilewidth),
                                   row_padding=spacing,
                                   column_padding=spacing,
                                   )
