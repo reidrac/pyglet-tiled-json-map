@@ -238,7 +238,7 @@ class ObjectGroup(BaseLayer):
 
                     self.sprites[(obj["x"], obj["y"])] = sprite
 
-        for key in self.sprites.keys():
+        for key in list(self.sprites):
             if key not in in_use:
                 self.sprites[key].delete()
                 del self.sprites[key]
